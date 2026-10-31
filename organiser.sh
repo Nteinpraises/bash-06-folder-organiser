@@ -2,6 +2,11 @@
 
 folder="${1;-.}"
 
+if [[ ! -d "$folder" ]]; then
+    echo "Error: folder '$folder' does not exist" >&2
+    exit 1
+fi
+
 for file in "$folder"/*; do
     [[ -f "$file" ]] || continue
 
@@ -23,5 +28,7 @@ for file in "$folder"/*; do
         *) category="Other" ;;
     esac
 
+    mkdir -p "$folder/$category"
+    mv "$file" "$folder/$category/"
     echo " $name -> $category/"
 done

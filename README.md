@@ -28,20 +28,21 @@ folder, without ever overwriting anything.
 - Case-insensitive matching, so `.JPG` counts as an image
 - Creates a category folder only when a file is going into it
 - Moves top-level files only and never touches existing sub-folders
-- Handles file names that contain spaces
+- Handles filenames that contain spaces
 - Never overwrites: a clash becomes `photo(1).jpg`, then `photo(2).jpg`, and so on
 - Prints every move and a final summary with the number of files moved
 - Prints an error on stderr and exits with status 1 if the folder does not exist
 
 ## Categories
 
- Folder       Extensions                                         
- `Images`     jpg, jpeg, png, gif, webp                          
- `Documents`  pdf, doc, docx, txt, xlsx, pptx                    
- `Audio`      mp3, wav, m4a                                      
- `Video`      mp4, mkv, mov                                      
- `Archives`   zip, rar, tar, gz                                  
- `Other`      everything else, including files with no extension 
+The extension is checked without caring about upper or lower case.
+
+- `Images`: jpg, JPEG, PNG, GIF, webp
+- `Documents`: PDF, doc, docx, txt, xlsx, pptx
+- `Audio`: mp3, wav, m4a
+- `Video`: mp4, mkv, mov
+- `Archives`: zip, rar, tar, gz
+- `Other`: everything else, including files with no extension
 
 ## Installation and Usage
 
@@ -59,8 +60,7 @@ Run it on a folder:
 ./organise.sh ~/Downloads
 ```
 
-
-## How to Test It Safely
+## How To Test It Safely
 
 Do not test on a real folder. Build a test folder outside the repository,
 copy it, and run the script on the copy:
@@ -99,7 +99,7 @@ Reset between tests with `rm -rf ~/test-run && cp -r ~/test-original ~/test-run`
 - Looping over files and testing them with `[[ -f ]]` and `[[ -d ]]`
 - Cutting names apart with `${name##*.}` and `${name%.*}`
 - Using `case` to match several patterns at once
-- Sending errors to stderr and using exit codes(like 0 and 1)
+- Sending errors to stderr and using exit codes (like 0 and 1)
 
 ## Notes and Limits
 

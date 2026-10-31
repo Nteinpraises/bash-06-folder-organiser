@@ -31,7 +31,19 @@ for file in "$folder"/*; do
     esac
 
     mkdir -p "$folder/$category"
-    mv "$file" "$folder/$category/"
+    
+    
+    dest="$folder/$category/$name"
+    n=1
+    while [[ -e "$dest" ]]; do
+        if [[ "$name" == *.* ]]; then
+            dest="$folder/$category/${name%.*}($n).${name##*.}"
+        else    
+            dest="$folder/$category/${name}($n)"
+        fi
+        (( n++ ))
+    done
+    mv "$file" "$dest"
 
     (( moved++ ))
 

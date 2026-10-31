@@ -1,11 +1,13 @@
 #!/bin/bash
 
-folder="${1;-.}"
+folder="${1:-.}"
 
 if [[ ! -d "$folder" ]]; then
     echo "Error: folder '$folder' does not exist" >&2
     exit 1
 fi
+
+moved=0
 
 for file in "$folder"/*; do
     [[ -f "$file" ]] || continue
@@ -30,5 +32,10 @@ for file in "$folder"/*; do
 
     mkdir -p "$folder/$category"
     mv "$file" "$folder/$category/"
+
+    (( moved++ ))
+
     echo " $name -> $category/"
 done
+
+echo "Done: $moved files moved"

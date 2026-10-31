@@ -85,6 +85,11 @@ find ~/test-run -type f | wc -l
 
 Reset between tests with `rm -rf ~/test-run && cp -r ~/test-original ~/test-run`.
 
+## screenshots
+
+  ![alt text](assets/image/code_screenshot_2.png)
+  ![alt text](assets/image/code_screenshot.png)
+
 ## Challenges Faced
 
 - **Running it in the wrong folder.** I ran the script with no argument inside
